@@ -69,18 +69,18 @@ bool is_not_odd(int value)
 
 int find_first_not_odd(vector<int>::iterator begin, vector<int>::iterator end)
 {
-	int first_odd = 0;
+	int first_not_odd = 0;
 	vector<int>::iterator odd_iterator = std::find_if(begin, end, is_not_odd);
 	if (odd_iterator != end)
-		first_odd = *odd_iterator;
-	return first_odd;
+		first_not_odd = *odd_iterator;
+	return first_not_odd;
 }
 
 void modify(vector<int>::iterator begin, vector<int>::iterator end)
 {
-	int first_odd = find_first_not_odd(begin, end);
+	int first_not_odd = find_first_not_odd(begin, end);
 	for (vector<int>::iterator current = begin; current < end; current++)
-		*current += first_odd;
+		*current += first_not_odd;
 
 }
 
@@ -99,10 +99,10 @@ public:
 };
 void transform_modify(vector<int>* source_vector)
 {
-	int first_odd = find_first_not_odd(source_vector->begin(), source_vector->end());
+	int first_not_odd = find_first_not_odd(source_vector->begin(), source_vector->end());
 	vector<int> new_vector;
 	new_vector.resize(source_vector->size());
-	transform_modifyer tmp_mod(first_odd);
+	transform_modifyer tmp_mod(first_not_odd);
 	transform(source_vector->begin(), source_vector->end(), source_vector->begin(), tmp_mod);
 
 }
@@ -119,8 +119,8 @@ public:
 };
 void foreach_modify(vector<int>* source_vector)
 {
-	int first_odd = find_first_not_odd(source_vector->begin(), source_vector->end());
-	foreach_modifyer tmp_mod(first_odd);
+	int first_not_odd = find_first_not_odd(source_vector->begin(), source_vector->end());
+	foreach_modifyer tmp_mod(first_not_odd);
 	for_each(source_vector->begin(), source_vector->end(), tmp_mod);
 	//return tmp_mod.get_vector();
 }
