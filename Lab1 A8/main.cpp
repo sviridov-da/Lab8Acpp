@@ -70,6 +70,7 @@ vector<int> txt_to_vector()
 {
 	vector<int> current_vector;
 	string file_name;
+	cout << "Enter file name: "
 	cin >> file_name;
 	ifstream input_file;
 	input_file.open(file_name);
